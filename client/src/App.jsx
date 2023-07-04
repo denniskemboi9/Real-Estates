@@ -6,7 +6,7 @@ import Register from "./Pages/Register";
 import ApproveProperty from "./Pages/ApproveProperty";
 import AddProperty from "./Pages/AddProperty";
 import Home from "./Pages/Home";
-import UserProfile from "./Pages/UserProfile"
+
 
 function App() {
     return (
@@ -18,7 +18,8 @@ function App() {
             <Route path="/Register" element={<Register />}/>
             <Route path="/ApproveProperty" element={< ApproveProperty/>}/>
             <Route path="/AddProperty" element={< AddProperty/>}/>
-            <Route path="/UserProfile" element={<UserProfile/>}/>
+            
+            
         </Route>
 
         </Routes>
