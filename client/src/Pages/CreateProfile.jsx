@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
-import './profile.css'
-
+import './profile.css';
 
 const CreateProfile = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
+  const [profileImage, setProfileImage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    
+
     setName('');
     setEmail('');
     setBio('');
+    setProfileImage(null);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setProfileImage(file);
   };
 
   return (
@@ -46,10 +54,21 @@ const CreateProfile = () => {
           onChange={(e) => setBio(e.target.value)}
         ></textarea>
       </div>
+      <div>
+        <label htmlFor="profileImage">Profile Image:</label>
+        <input
+          type="file"
+          id="profileImage"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+      </div>
       <button type="submit">Create Profile</button>
     </form>
   );
 };
 
 export default CreateProfile;
+
+
 
