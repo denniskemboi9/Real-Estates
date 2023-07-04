@@ -6,7 +6,6 @@ import Register from "./Pages/Register";
 import ApproveProperty from "./Pages/ApproveProperty";
 import AddProperty from "./Pages/AddProperty";
 import Home from "./Pages/Home";
-import CreateProfile from "./Pages/CreateProfile";
 
 
 function App() {
@@ -14,16 +13,12 @@ function App() {
         <BrowserRouter>
         <Routes>
         <Route path="/" element={<Layout />}>
-            <Route index element={<Login />}/>
-            <Route path="/Home" element={<Home/>}/>
+            <Route index element={<Home />}/>
+            {/* <Route path="/Home" element={<Home/>}/> */}
             <Route path="/Register" element={<Register />}/>
             <Route path="/ApproveProperty" element={< ApproveProperty/>}/>
-            <Route path="/AddProperty" element={< AddProperty/>}/>
-            {/* <Route path="/ViewProfile" component={ViewProfile} /> */}
-            <Route path="/CreateProfile" element={< CreateProfile/>} />
-
-            
-            
+            <Route path="/AddProperty" element={< AddProperty/>}/> 
+            <Route path="/Login" element={<Login />}/>   
         </Route>
 
         </Routes>

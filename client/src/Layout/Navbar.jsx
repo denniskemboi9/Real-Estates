@@ -13,13 +13,9 @@ function NavScrollExample() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
         <Nav className="mx-auto" style={{ maxHeight: '100px' }} navbarScroll>
-        <Nav.Link as={Link} to="/Home" style={{ color: 'black' }}>Home</Nav.Link>
+        <Nav.Link as={Link} to="/" style={{ color: 'black' }}>Home</Nav.Link>
         <Nav.Link as={Link} to="/ApproveProperty" style={{ color: 'black' }}>Approve Property</Nav.Link>
         <Nav.Link as={Link} to="/AddProperty" style={{ color: 'black' }}>Add Property</Nav.Link>
-        <NavDropdown title="UserProfile" id="navbarScrollingDropdown">
-            <NavDropdown.Item as={Link} to="/ViewProfile">View profile</NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/CreateProfile">Create profile</NavDropdown.Item>
-          </NavDropdown>
         </Nav>
 
           <NavDropdown title="have an account?" id="navbarScrollingDropdown">
