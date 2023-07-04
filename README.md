@@ -1,19 +1,24 @@
-# Poem App
-Poem App is a platform to read poems and create your own poems. It is built with React (frontend) and Ruby/Sinatra(backend) to store the poems.
+# README
 
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Installation
-- Clone the repo
+Things you may want to cover:
 
-- cd into react and `npm install` to install the dependencies
-- Run `npm start` to start the server
+* Ruby version
 
-- cd into sinatra and `bundle install` to install the dependencies
-- Run `rake server` to start the server
+* System dependencies
 
+* Configuration
 
-## Contributing
-Pull requests are welcome.
+* Database creation
 
-## License
-[MIT]('https://choosealicense.com/licenses/mit/')
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
