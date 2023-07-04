@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './profile.css'
 
 
 const CreateProfile = () => {
@@ -15,7 +16,7 @@ const CreateProfile = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form ClassName="form" onSubmit={handleSubmit}>
       <h2>Create Your Profile</h2>
       <div>
         <label htmlFor="name">Name:</label>
