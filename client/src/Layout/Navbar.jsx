@@ -16,6 +16,7 @@ function NavScrollExample() {
         <Nav.Link as={Link} to="/Home" style={{ color: 'black' }}>Home</Nav.Link>
         <Nav.Link as={Link} to="/ApproveProperty" style={{ color: 'black' }}>Approve Property</Nav.Link>
         <Nav.Link as={Link} to="/AddProperty" style={{ color: 'black' }}>Add Property</Nav.Link>
+        <Nav.Link as={Link} to="/UserProfile" style={{ color: 'black' }}>User Profile</Nav.Link>
         </Nav>
 
           <NavDropdown title="have an account?" id="navbarScrollingDropdown">
