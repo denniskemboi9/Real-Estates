@@ -6,6 +6,7 @@ import Register from "./Pages/Register";
 import ApproveProperty from "./Pages/ApproveProperty";
 import AddProperty from "./Pages/AddProperty";
 import Home from "./Pages/Home";
+import LandingPage from "./Pages/LandingPage";
 
 
 function App() {
@@ -13,8 +14,8 @@ function App() {
         <BrowserRouter>
         <Routes>
         <Route path="/" element={<Layout />}>
-            <Route index element={<Home />}/>
-            {/* <Route path="/Home" element={<Home/>}/> */}
+            <Route index element={<LandingPage />}/>
+            <Route path="/Home" element={<Home/>}/>
             <Route path="/Register" element={<Register />}/>
             <Route path="/ApproveProperty" element={< ApproveProperty/>}/>
             <Route path="/AddProperty" element={< AddProperty/>}/> 

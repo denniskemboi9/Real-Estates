@@ -6,7 +6,7 @@ function AddProperty() {
   const [property, setProperty] = useState({
     title: '',
     description: '',
-    price: 0,
+    imageUrl: '',
     location: '',
   });
 
@@ -22,7 +22,7 @@ function AddProperty() {
     setProperty({
       title: '',
       description: '',
-      price: 0,
+      imageUrl: '',
       location: '',
     });
   };
@@ -32,11 +32,22 @@ function AddProperty() {
       <h1>Add Property</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             name="title"
             value={property.title}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="location">
+          <Form.Label>Location</Form.Label>
+          <Form.Control
+            type="text"
+            name="location"
+            value={property.location}
             onChange={handleChange}
             required
           />
@@ -54,23 +65,12 @@ function AddProperty() {
           />
         </Form.Group>
 
-        <Form.Group controlId="price">
-          <Form.Label>Price</Form.Label>
-          <Form.Control
-            type="number"
-            name="price"
-            value={property.price}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="location">
-          <Form.Label>Location</Form.Label>
+        <Form.Group controlId="imageUrl">
+          <Form.Label>Image URL</Form.Label>
           <Form.Control
             type="text"
-            name="location"
-            value={property.location}
+            name="imageUrl"
+            value={property.imageUrl}
             onChange={handleChange}
             required
           />

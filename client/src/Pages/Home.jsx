@@ -1,53 +1,46 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React, { useState, useEffect } from 'react';
 
-export default function Home() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    customPaging: function (i) {
-      return (
-        <div
-          style={{
-            width: '10px',
-            height: '10px',
-            borderRadius: '50%',
-            background: i === 0 ? 'white' : 'gray',
-          }}
-        />
-      );
-    },
-    dotsClass: 'slick-dots',
-    className: 'slider',
+function Home() {
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    // Fetch property data from the backend API
+    fetchProperties();
+  }, []);
+
+  const fetchProperties = async () => {
+    try {
+      // Make a GET request to fetch property data
+      const response = await fetch('/api/properties'); // Replace '/api/properties' with the actual endpoint of your backend API
+      const data = await response.json();
+
+      // Update the properties state with the fetched data
+      setProperties(data);
+    } catch (error) {
+      console.error('Error fetching properties:', error);
+    }
   };
 
   return (
-    <div>
-      <div className="slider-container">
-        <Slider {...settings}>
-          <div>
-            <img
-              src="https://static.wixstatic.com/media/82fcd3_1dcc53b4e88842c7816a8251e1102530~mv2_d_4896_3264_s_4_2.jpg/v1/fill/w_1905,h_652,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/82fcd3_1dcc53b4e88842c7816a8251e1102530~mv2_d_4896_3264_s_4_2.jpg"
-              alt="Slide 2"
-              style={{ width: '100%', maxHeight: '400px', objectFit: 'cover' }}
-            />
-          </div>
-          <div>
-            <img
-              src="https://static.wixstatic.com/media/4a7193_3d46254f0abd4093a0a93f8d6567d090~mv2.jpg/v1/fill/w_1251,h_678,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Enrogue%20Interior_CGI%20%20(3b).jpg"
-              alt="Slide 3"
-              style={{ width: '100%', maxHeight: '400px', objectFit: 'cover' }}
-            />
-          </div>
-        </Slider>
-      </div>
+    <div className="container">
+      <h1>Properties</h1>
+      {properties.length > 0 ? (
+        <ul>
+          {properties.map((property) => (
+            <li key={property.id}>
+              <h2>{property.title}</h2>
+              <p>{property.description}</p>
+              <p>Price: {property.price}</p>
+              <p>Location: {property.location}</p>
+              <img src={property.imageUrl} alt={property.title} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No properties found.</p>
+      )}
     </div>
   );
 }
+
+export default Home;
