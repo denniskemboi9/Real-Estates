@@ -1,11 +1,11 @@
 import React from 'react';
 
-function ContactUs() {
+function AddProperty() {
     return (
         <div>
-            Contact Us
+            Add Property
         </div>
     );
 }
 
-export default ContactUs;
+export default AddProperty;

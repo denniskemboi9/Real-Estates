@@ -1,22 +1,18 @@
-import Button from 'react-bootstrap/Button';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
-import '../index.css'
 
 function Footer() {
   return (
-    <div className="wrapper">
+    <div className="wrapper" style={{ minHeight: '10vh', display: 'flex', flexDirection: 'column' }}>
       <Card className="text-center">
-        <Card.Header>Featured</Card.Header>
         <Card.Body>
-          <Card.Title>Special title treatment</Card.Title>
+          <Card.Title>Real Estate</Card.Title>
           <Card.Text>
-            With supporting text below as a natural lead-in to additional content.
+            Real estate is a valuable asset class that involves the buying, selling, and renting of properties. It encompasses residential, commercial, and industrial properties, and plays a significant role in the economy.
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
         </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
       </Card>
-      <footer className="footer">This is the footer</footer>
+      <footer className="footer mt-auto py-0 bg-primary text-center text-white">Copyright © 2023 Real Estate.</footer>
     </div>
   );
 }

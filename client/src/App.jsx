@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from "./Layout/Layout";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-import AboutUs from "./Pages/AboutUs";
-import ContactUs from "./Pages/ContactUs";
+import ApproveProperty from "./Pages/ApproveProperty";
+import AddProperty from "./Pages/AddProperty";
 import Home from "./Pages/Home";
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
             <Route index element={<Login />}/>
             <Route path="/Home" element={<Home/>}/>
             <Route path="/Register" element={<Register />}/>
-            <Route path="/AboutUs" element={< AboutUs/>}/>
-            <Route path="/ContactUs" element={< ContactUs/>}/>
+            <Route path="/ApproveProperty" element={< ApproveProperty/>}/>
+            <Route path="/AddProperty" element={< AddProperty/>}/>
         </Route>
 
         </Routes>
