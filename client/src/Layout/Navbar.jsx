@@ -17,15 +17,14 @@ function NavScrollExample() {
         <Nav.Link as={Link} to="/ApproveProperty" style={{ color: 'black' }}>Approve Property</Nav.Link>
         <Nav.Link as={Link} to="/AddProperty" style={{ color: 'black' }}>Add Property</Nav.Link>
         <NavDropdown title="UserProfile" id="navbarScrollingDropdown">
-          {/* <NavDropdown.Item as={Link} to="/Login">Log in</NavDropdown.Item> */}
-            <NavDropdown.Item as={Link} to="/CreateProfile">Create profile</NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/ViewProfile">View profile</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/CreateProfile">Create profile</NavDropdown.Item>
           </NavDropdown>
         </Nav>
 
           <NavDropdown title="have an account?" id="navbarScrollingDropdown">
-          {/* <NavDropdown.Item as={Link} to="/Login">Log in</NavDropdown.Item> */}
-            <NavDropdown.Item as={Link} to="/Register">Register</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/Register">Sign up</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/Login">Sign in</NavDropdown.Item>
           </NavDropdown>
         </Navbar.Collapse>
       </Container>
