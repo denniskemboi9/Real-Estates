@@ -1,11 +1,9 @@
 import React from 'react';
 
 function ApproveProperty() {
-  return(
-    <div>
-      Approve property
-    </div>
-  )
+  return (
+    <div>Approve Property</div>
+  );
 }
 
 export default ApproveProperty;

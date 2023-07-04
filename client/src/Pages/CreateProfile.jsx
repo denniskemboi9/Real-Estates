@@ -16,7 +16,7 @@ const CreateProfile = () => {
   };
 
   return (
-    <form ClassName="form" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <h2>Create Your Profile</h2>
       <div>
         <label htmlFor="name">Name:</label>
