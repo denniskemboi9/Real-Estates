@@ -1,8 +1,16 @@
 // import React from 'react';
+// import { useNavigate } from 'react-router-dom';
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
 
 // function Login() {
+//   const navigate = useNavigate();
+
+//   const handleLogin = () => {
+
+//     navigate('/Home');
+//   };
+
 //   return (
 //     <Form>
 //       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -20,7 +28,7 @@
 //         <Form.Check type="checkbox" label="Check me out" />
 //       </Form.Group>
 
-//       <Button variant="primary" type="submit">
+//       <Button variant="primary" type="button" onClick={handleLogin}>
 //         Log in
 //       </Button>
 //     </Form>
@@ -29,7 +37,7 @@
 
 // export default Login;
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -37,9 +45,6 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Perform login logic here
-
-    // Navigate to the home page
     navigate('/Home');
   };
 

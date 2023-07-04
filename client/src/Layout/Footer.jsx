@@ -8,7 +8,7 @@ function Footer() {
         <Card.Body>
           <Card.Title>Real Estate</Card.Title>
           <Card.Text>
-            Real estate is a valuable asset class that involves the buying, selling, and renting of properties. It encompasses residential, commercial, and industrial properties, and plays a significant role in the economy.
+            Real estate is a valuable asset class that involves the buying, selling, and renting of properties.
           </Card.Text>
         </Card.Body>
       </Card>
