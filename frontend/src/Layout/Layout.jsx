@@ -4,15 +4,17 @@ import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 
 function Layout() {
-    return (
-        <div>
-            <Navbar />
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Navbar />
 
-            <Outlet/>
-
-            <Footer />
-            </div>
-    );
+      <div style={{ flex: '1', paddingBottom: '60px' }}>
+        <Outlet />
+      </div>
+      
+      <Footer style={{ marginTop: 'auto' }} />
+    </div>
+  );
 }
 
-export default Layout;<div>Layout</div>
+export default Layout;
