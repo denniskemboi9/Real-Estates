@@ -16,12 +16,12 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-[30vw] bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-3xl font-semibold mb-6">Sign in to your account</h1>
+    <div className="d-flex justify-content-center align-items-center min-vh-90 bg-gray-100">
+      <div className="w-30 bg-white rounded-lg shadow-lg p-4">
+        <h1 className="text-3xl font-semibold mb-4">Sign in to your account</h1>
         <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">
+          <div className="mb-4">
+            <label htmlFor="email" className="form-label fw-bold fs-5">
               Email
             </label>
             <input
@@ -29,13 +29,13 @@ export default function Login() {
               id="email"
               value={emailAddress}
               onChange={(e) => setEmailAddress(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm text-gray-900 placeholder-gray-400 focus:outline-none"
+              className="form-control"
               placeholder="Enter your email"
               required
             />
           </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">
+          <div className="mb-4">
+            <label htmlFor="password" className="form-label fw-bold fs-5">
               Password
             </label>
             <input
@@ -43,21 +43,22 @@ export default function Login() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm text-gray-900 placeholder-gray-400 focus:outline-none"
+              className="form-control"
               placeholder="Enter your password"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg py-2.5 text-sm focus:outline-none"
+            className="btn btn-primary w-30"
+            style={{ backgroundColor: 'green', fontWeight: 'bold', color: 'white' }}
           >
             Sign In
           </button>
         </form>
-        <div className="mt-6 text-sm text-gray-600">
+        <div className="mt-4 text-sm text-gray-600">
           Don't have an account?{' '}
-          <Link to="/Register" className="text-blue-600 hover:underline">
+          <Link to="/Register" className="text-blue-600">
             Sign up
           </Link>
         </div>
@@ -65,3 +66,5 @@ export default function Login() {
     </div>
   );
 }
+
+
