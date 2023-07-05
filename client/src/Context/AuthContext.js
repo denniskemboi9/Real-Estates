@@ -57,17 +57,17 @@ export default function AuthProvider({children})
     }
 
     // Register
-    const register = (email, password) =>{
+    const register = (email, password, password_confirmation) =>{
         // Post this data to the backend
         fetch("/signup",{
             method: "POST",
             headers:{"Content-Type": "application/json"},
-            body: JSON.stringify({email, password})
+            body: JSON.stringify({email, password, password_confirmation})
         })
         .then(res=>res.json())
         .then((response) => {
             console.log(response);
-            if (response.error) {
+            if (response.errors) {
               Swal.fire("Error", response.error, "error");
             } 
             else if (response.success) {
