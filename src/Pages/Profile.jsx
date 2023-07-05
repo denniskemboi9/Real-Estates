@@ -1,85 +1,87 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../Pages/AuthContext';
-import { Modal, Button } from 'react-bootstrap';
+// Code Snippet 1
 
-export default function Profile() {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-  const [showModal, setShowModal] = React.useState(false);
+// import React from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
+// import { AuthContext } from '../Context/AuthContext';
+// import { Modal, Button } from 'react-bootstrap';
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
+// export default function Profile() {
+//   const { logout } = useAuth();
+//   const navigate = useNavigate();
+//   const [showModal, setShowModal] = React.useState(false);
 
-  const handleShowModal = () => {
-    setShowModal(true);
-  };
+//   const handleLogout = () => {
+//     logout();
+//     navigate('/login');
+//   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+//   const handleShowModal = () => {
+//     setShowModal(true);
+//   };
 
-  return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{
-        height: '50vh',
-        background: 'linear-gradient(to bottom, #F2F2F2, #FFFFFF)', // Background gradient
-        fontFamily: 'Arial, sans-serif',
-      }}
-    >
-      <div
-        className="card"
-        style={{
-          width: '400px',
-          borderRadius: '10px',
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-          backgroundColor: '#FFFFFF',
-        }}
-      >
-        <div className="card-body" style={{ padding: '20px' }}>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSreeYw1CRaIf6BEWbAdep_fvE-COVhHUiq5g&usqp=CAU"
-            alt="Profile"
-            style={{ width: '200px', height: '200px', borderRadius: '50%' }}
-          />
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
-            <h3 className="card-title" style={{ fontSize: '24px', marginBottom: '10px' }}>
-              Method Man
-            </h3>
-            <p className="card-text" style={{ fontSize: '16px', marginBottom: '5px' }}>
-              Username: Methodman
-            </p>
-            <p className="card-text" style={{ fontSize: '16px', marginBottom: '5px' }}>
-              Email: john.doe@example.com
-            </p>
-          </div>
-          <button
-            onClick={handleShowModal}
-            className="btn btn-primary fw-bold"
-            style={{ width: '30%', fontSize: '16px', marginTop: '20px' }}
-          >
-            Logout
-          </button>
-        </div>
-      </div>
+//   const handleCloseModal = () => {
+//     setShowModal(false);
+//   };
 
-      <Modal show={showModal} onHide={handleCloseModal} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Logout Successful</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>You have been logged out successfully.</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleLogout}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
-}
+//   return (
+//     <div
+//       className="d-flex justify-content-center align-items-center"
+//       style={{
+//         height: '100vh',
+//         background: 'linear-gradient(to bottom, #F2F2F2, #FFFFFF)', // Background gradient
+//         fontFamily: 'Arial, sans-serif',
+//       }}
+//     >
+//       <div
+//         className="card"
+//         style={{
+//           width: '400px',
+//           borderRadius: '10px',
+//           boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+//           backgroundColor: '#FFFFFF',
+//         }}
+//       >
+//         <div className="card-body" style={{ padding: '20px' }}>
+//           <img
+//             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSreeYw1CRaIf6BEWbAdep_fvE-COVhHUiq5g&usqp=CAU"
+//             alt="Profile"
+//             style={{ width: '200px', height: '200px', borderRadius: '50%' }}
+//           />
+//           <div style={{ marginTop: '20px', textAlign: 'center' }}>
+//             <h3 className="card-title" style={{ fontSize: '24px', marginBottom: '10px' }}>
+//               Method Man
+//             </h3>
+//             <p className="card-text" style={{ fontSize: '16px', marginBottom: '5px' }}>
+//               Username: Methodman
+//             </p>
+//             <p className="card-text" style={{ fontSize: '16px', marginBottom: '5px' }}>
+//               Email: john.doe@example.com
+//             </p>
+//           </div>
+//           <button
+//             onClick={handleShowModal}
+//             className="btn btn-primary"
+//             style={{ width: '100%', fontSize: '16px', marginTop: '20px' }}
+//           >
+//             Logout
+//           </button>
+//         </div>
+//       </div>
+
+//       <Modal show={showModal} onHide={handleCloseModal} centered>
+//         <Modal.Header closeButton>
+//           <Modal.Title>Logout Successful</Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>You have been logged out successfully.</Modal.Body>
+//         <Modal.Footer>
+//           <Button variant="primary" onClick={handleLogout}>
+//             Close
+//           </Button>
+//         </Modal.Footer>
+//       </Modal>
+//     </div>
+//   );
+// }
 
 
 // // Code snippet 2
@@ -165,3 +167,29 @@ export default function Profile() {
 //     </div>
 //   );
 // }
+
+import React, { useContext } from 'react'
+import { AuthContext } from '../Context/AuthContext'
+
+export default function Profile() {
+
+  const {currentUser, login} = useContext(AuthContext)  
+
+
+  return (
+    <div>
+      {
+        currentUser && currentUser?
+        <>
+      <h4>Email: {currentUser && currentUser.email}</h4>
+      <h4>Created-at: {currentUser && currentUser.created_at}</h4>
+      <h4>Updated-at: {currentUser && currentUser.updated_at}</h4>
+        </>
+        :
+        <div className='text-info'>
+            Login to view your profile details
+        </div>
+      }
+    </div>
+  )
+}
