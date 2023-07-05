@@ -1,61 +1,67 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 export default function Login() {
-  const [emailaddress, setemail] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const history = useNavigate();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(emailaddress + '  ' + password);
+    console.log(emailAddress + '  ' + password);
     // Perform login logic here
 
     // Redirect to the home page after successful login
     history.push('/');
   };
 
-  
   return (
-    <div className='flex justify-center'>
-      <form onSubmit={handleSubmit} className='w-[30vw] bg-white p-5'>
-        <h1 className='font-semibold text-2xl my-6'>Login</h1>
- 
-        <div className='mb-6'>
-          <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
-            enter email 
-          </label>
-          <input
-            type='text'
-            value={emailaddress}
-            onChange={(e) => setemail(e.target.value)}
-            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500'
-            placeholder='email'
-            required
-          />
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="w-[30vw] bg-white rounded-lg shadow-lg p-6">
+        <h1 className="text-3xl font-semibold mb-6">Sign in to your account</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-6">
+            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={emailAddress}
+              onChange={(e) => setEmailAddress(e.target.value)}
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm text-gray-900 placeholder-gray-400 focus:outline-none"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm text-gray-900 placeholder-gray-400 focus:outline-none"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg py-2.5 text-sm focus:outline-none"
+          >
+            Sign In
+          </button>
+        </form>
+        <div className="mt-6 text-sm text-gray-600">
+          Don't have an account?{' '}
+          <Link to="/Register" className="text-blue-600 hover:underline">
+            Sign up
+          </Link>
         </div>
-        <div className='mb-6'>
-          <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
-            Your password
-          </label>
-          <input
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500'
-            required
-          />
-        </div>
-
-        <button
-          type='submit'
-          className='bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'
-        >
-          Login
-        </button>
-      </form>
+      </div>
     </div>
   );
 }
-
