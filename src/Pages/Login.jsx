@@ -12,7 +12,7 @@ export default function Login() {
     // Perform login logic here
 
     // Redirect to the home page after successful login
-    history.push('/');
+    history('/');
   };
 
   return (

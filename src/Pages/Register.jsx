@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const history = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,11 +13,15 @@ export default function Register() {
     // Perform sign up logic here
   };
 
+  const handleAgreeAndJoin = () => {
+    // Redirect to the login page
+    history('/login');
+  };
+
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-90 bg-gray-500">
       <div className="w-50 bg-white rounded-lg shadow-lg p-4">
         <form onSubmit={handleSubmit}>
-          
           <div className="mb-3">
             <label htmlFor="email" className="form-label fw-bold fs-5 text-black">
               Email
@@ -62,6 +67,7 @@ export default function Register() {
           <button
             type="submit"
             className="btn btn-success fw-bold fs-5"
+            onClick={handleAgreeAndJoin}
           >
             Agree &amp; Join
           </button>
@@ -76,8 +82,3 @@ export default function Register() {
     </div>
   );
 }
-
-
-
-
-
