@@ -25,7 +25,7 @@ export default function Profile() {
     <div
       className="d-flex justify-content-center align-items-center"
       style={{
-        height: '100vh',
+        height: '50vh',
         background: 'linear-gradient(to bottom, #F2F2F2, #FFFFFF)', // Background gradient
         fontFamily: 'Arial, sans-serif',
       }}
@@ -58,8 +58,8 @@ export default function Profile() {
           </div>
           <button
             onClick={handleShowModal}
-            className="btn btn-primary"
-            style={{ width: '100%', fontSize: '16px', marginTop: '20px' }}
+            className="btn btn-primary fw-bold"
+            style={{ width: '30%', fontSize: '16px', marginTop: '20px' }}
           >
             Logout
           </button>
