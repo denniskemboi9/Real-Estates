@@ -83,55 +83,88 @@
 //   );
 // }
 
-import React, { useContext, useState } from 'react'
-import { AuthContext } from '../Context/AuthContext'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../Context/AuthContext';
+import { Link } from 'react-router-dom';
+
 export default function Register() {
+  const { register } = useContext(AuthContext);
 
-  const {register} = useContext(AuthContext)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [password_confirmation, setPasswordConfirmation] = useState('');
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [password_confirmation, setPasswordConfirmation] = useState("")
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email + '  ' + password);
+    register(email, password, password_confirmation);
+  };
 
-
-  const handleSubmit = (e) =>{
-      e.preventDefault()
-      console.log(email+ "  "+password)
-     register(email, password, password_confirmation)
-  }
   return (
-    <div className='flex justify-center'>
+    <div className="d-flex justify-content-center">
+      <form onSubmit={handleSubmit} className="w-45 bg-white p-5 shadow-sm">
+        <h1 className="font-semibold text-2xl my-6">SignUp</h1>
 
-<form onSubmit={handleSubmit} className='w-[30vw] bg-white p-5'>
-  <h1 className='font-semibold text-2xl my-6'>SignUp</h1>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label font-weight-bold">
+            Your Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="form-control"
+            placeholder="Email"
+            required
+          />
+        </div>
 
-  <div className="mb-6">
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
-    <input type="text" value={email} onChange={(e)=> setEmail(e.target.value) } className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="email" required />
-  </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label font-weight-bold">
+            Your Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="form-control"
+            required
+          />
+        </div>
 
-  <div className="mb-6">
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value) } className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" required />
-  </div>
-  
-  <div className="mb-6">
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password Confirmation</label>
-    <input type="password_confirmation" value={password_confirmation} onChange={(e)=> setPasswordConfirmation(e.target.value) } className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" required />
-  </div>
-  
-  <button type="submit" className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
-    Sign up
-  </button>
-  <div className='my-5'>Already Registered? 
-      <Link className='ml-4' to="/login">
-    login
-  </Link>
-  </div>
+        <div className="mb-3">
+          <label htmlFor="password_confirmation" className="form-label font-weight-bold">
+            Password Confirmation
+          </label>
+          <input
+            type="password"
+            id="password_confirmation"
+            value={password_confirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            className="form-control"
+            required
+          />
+        </div>
 
-</form>
+        <button
+          type="submit"
+          className="btn btn-primary btn-lg btn-block text-white"
+          style={{ backgroundColor: 'green' }}
+        >
+          Sign up
+        </button>
 
+        <div className="my-5">
+          Already Registered?{' '}
+          <Link className="ml-4" to="/login">
+            Login
+          </Link>
+        </div>
+      </form>
     </div>
-  )
+  );
 }
+
+
