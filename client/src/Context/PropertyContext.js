@@ -1,109 +1,175 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useState } from 'react';
 import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom";
+
 
 export const PropertyContext = createContext();
 
-export default function PropertyProvider({children}) 
-{
-    const navigate = useNavigate()
-    const [property, setProperty] = useState()
-    const [change, setChange] = useState(false)
+const PropertyProvider = ({ children }) => {
+
+  const navigate = useNavigate()
+
+  const [properties, setProperties] = useState([]);
+
+  const [change, setChange] = useState(false)
 
 
-        // Fetch Properties
-        useEffect(()=>{
-          fetch("/properties", {
-              method: "GET",
-              headers:{"Content-Type": "application/json"}
-          }
-          )
-          .then(res=>res.json())
-          .then(response=>{setProperty(response)
-          }
-          )
-      }, [change])
+  const fetchProperties = () => {
+    fetch('/properties')
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the properties state with the fetched properties
+        setProperties(data);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Error fetching properties:', error);
+      });
+  };
 
-
-    // Add a new Property
-    const addProperty = (name, location, description, image_url) =>{
-        fetch("/properties",{
-            method: "POST",
-            headers:{"Content-Type": "application/json"},    
-            body: JSON.stringify({name:name, location:location, description:description, image_url:image_url})
-        }
-        )
-        .then(res=>res.json())
+  const createProperty = (propertyData) => {
+    fetch('/properties', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(propertyData),
+    })
+    .then(res=>res.json())
         .then(response=>{
-            console.log(response)
-
             if(response.error)
             {
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: response.error,
-                })
+                 
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: response.error,
+                    })
             }
             else if(response.success)
             {
-              Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: response.success,
-                showConfirmButton: false,
-                timer: 1500
-              })
-              setChange(!change)
-              navigate("/")
-                
-            }
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Created property!',
+                    timer: 1500
+                  })
+                navigate("/Home")
+                setChange(!change)
 
+            }
             else{
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: "Something went wrong!",
-              })
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '',
+                    text: "Created property!!",
+                    timer: 3000
+                })
+
             }
             
         })
     }
-
-  
-
-    // Delete Poem  
-    const deleteProperty = (id) =>{
-      fetch(`/delete/${id}`,{
-          method: "DELETE"
+  const deleteProperty = (id) => {
+    fetch(`/properties/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response data
+        console.log('Deleted property:', data);
+        // Perform any additional actions after deleting the property
       })
-      .then(res=>res.json())
-      .then((response)=>{
-        setChange(!change)
-        console.log(response)
-        navigate("/")
-          Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Poem Deleted successfully!',
-              timer: 1500
-          })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Error deleting property:', error);
+      });
+  };
 
-      })
-    }
-  
-
-    const contextData = {
-      properties,
-      addProperty,
-      deleteProperty 
-    }
+  const contextData = {
+    properties,
+    fetchProperties,
+    createProperty,
+    deleteProperty,
+  };
 
   return (
-     <PoemContext.Provider value={contextData}>
-        {children}
-     </PoemContext.Provider>
+    <PropertyContext.Provider value={contextData}>
+      {children}
+    </PropertyContext.Provider>
+  );
+};
 
-  )
-}
+export default PropertyProvider;
 
+// import React, { createContext, useState } from 'react';
+
+// export const PropertyContext = createContext();
+
+// const PropertyProvider = ({ children }) => {
+//   const [properties, setProperties] = useState([]);
+
+//   const fetchProperties = () => {
+//     fetch('/properties')
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setProperties(data);
+//       })
+//       .catch((error) => {
+//         console.error('Error fetching properties:', error);
+//       });
+//   };
+
+//   const createProperty = (propertyData) => {
+//     fetch('/properties', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(propertyData),
+//     })
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error('Failed to create property');
+//         }
+//         return response.json();
+//       })
+//       .then((data) => {
+//         console.log('Created property:', data);
+//         // Perform any additional actions with the created property data
+//       })
+//       .catch((error) => {
+//         console.error('Error creating property:', error);
+//       });
+//   };
+
+//   const deleteProperty = (id) => {
+//     fetch(`/properties/${id}`, {
+//       method: 'DELETE',
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log('Deleted property:', data);
+//         // Perform any additional actions after deleting the property
+//       })
+//       .catch((error) => {
+//         console.error('Error deleting property:', error);
+//       });
+//   };
+
+//   const contextData = {
+//     properties,
+//     fetchProperties,
+//     createProperty,
+//     deleteProperty,
+//   };
+
+//   return (
+//     <PropertyContext.Provider value={contextData}>
+//       {children}
+//     </PropertyContext.Provider>
+//   );
+// };
+
+// export default PropertyProvider;

@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
+import { PropertyContext} from '../Context/PropertyContext'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { PropertyContext } from '../Context/PropertyContext';
 
 function AddProperty() {
-
-  const {properties} = useContext(PropertyContext)
+  const { createProperty } = useContext(PropertyContext);
 
   const [property, setProperty] = useState({
     title: '',
@@ -29,29 +29,21 @@ function AddProperty() {
       imageUrl: '',
       location: '',
     });
+
+    // Fetch property using the fetchProperty function from the context
+    createProperty(property);
   };
 
   return (
-    <div className="container">
+    <div className="container ">
       <h1>Add Property</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="title">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
             name="title"
             value={property.title}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="location">
-          <Form.Label>Location</Form.Label>
-          <Form.Control
-            type="text"
-            name="location"
-            value={property.location}
             onChange={handleChange}
             required
           />
@@ -75,6 +67,17 @@ function AddProperty() {
             type="text"
             name="imageUrl"
             value={property.imageUrl}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="location">
+          <Form.Label>Location</Form.Label>
+          <Form.Control
+            type="text"
+            name="location"
+            value={property.location}
             onChange={handleChange}
             required
           />

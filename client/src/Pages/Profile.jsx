@@ -85,16 +85,16 @@
 
 
 // // Code snippet 2
-// import React, { useEffect, useState } from 'react';
+// import React, { useContext, useEffect, useState } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
-// import { useAuth } from './AuthContext';
+// import { AuthContext } from '../Context/AuthContext';
 // import { Modal, Button } from 'react-bootstrap';
 
 // export default function Profile() {
-//   const { logout } = useAuth();
+//   const { logout } = useContext(AuthContext);
 //   const [user, setUser] = useState(null);
 //   const navigate = useNavigate();
-//   const [showModal, setShowModal] = React.useState(false);
+//   const [showModal, setShowModal] = useState(false);
 
 //   useEffect(() => {
 //     fetchUser();
@@ -102,7 +102,7 @@
 
 //   const fetchUser = async () => {
 //     try {
-//       const response = await fetch('/api/user');
+//       const response = await fetch('/users'); // Replace with your API endpoint
 //       const data = await response.json();
 //       setUser(data);
 //     } catch (error) {
@@ -136,7 +136,7 @@
 //         <div className="card-body">
 //           <div className="d-flex align-items-center mb-3">
 //             <img
-//               src={user?.profilePhoto}
+//               src={user?.profilePhoto} // Update with the correct property name
 //               alt="Profile"
 //               className="mr-3"
 //               style={{ width: '100px', height: '100px' }}
@@ -167,6 +167,7 @@
 //     </div>
 //   );
 // }
+
 
 import React, { useContext } from 'react'
 import { AuthContext } from '../Context/AuthContext'
