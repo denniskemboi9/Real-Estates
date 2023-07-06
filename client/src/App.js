@@ -8,12 +8,14 @@ import ApprovePropert from "./Pages/ApproveProperty";
 import LandingPage from "./Pages/Landingpage";
 import Profile from "./Pages/Profile";
 import AuthProvider from "./Context/AuthContext";
+import PropertyProvider from "./Context/PropertyContext";
 
 function App() {
     return (
   
         <BrowserRouter>
             <AuthProvider>
+                <PropertyProvider>
             
                 <Routes>
                     <Route path="/" element={<Layout />}>
@@ -27,7 +29,7 @@ function App() {
                     </Route>
                 </Routes>
 
-            
+                </PropertyProvider>
             </AuthProvider>
         </BrowserRouter>
     )
