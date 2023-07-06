@@ -3,7 +3,8 @@ class PropertiesController < ApplicationController
     # Show All Properties
     def index
       property = Property.all
-      render json: { success: "Properties"}
+      render json: property
+      # { success: "Properties"}
     end
     
     # # Show Property by ID
@@ -26,12 +27,12 @@ class PropertiesController < ApplicationController
       render json: {message: "Property Deleted Succesfully"}
     end
 
-    # Approve Property posts
-    def approve_property
-      property = Property.find_by(id: params[:id])
-      if property.is_admin
+    # # Approve Property posts
+    # def approve_property
+    #   property = Property.find_by(id: params[:id])
+    #   if property.is_admin
         
-    end
+    # end
     
     private
     def property_params
