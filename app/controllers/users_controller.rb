@@ -12,6 +12,18 @@ class UsersController < ApplicationController
     def show
       render json: @current_user
     end
+
+    # Get current user
+    def current_user
+      user = User.find_by(id: session[:user_id])
+    
+      if user
+        render json: { success: "This is current user"}
+
+      else
+        render json: {error: "No user is logged in"}
+      end
+    end
   
     private
   

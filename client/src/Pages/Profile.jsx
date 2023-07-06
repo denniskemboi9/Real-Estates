@@ -173,7 +173,7 @@ import { AuthContext } from '../Context/AuthContext'
 
 export default function Profile() {
 
-  const {currentUser, login} = useContext(AuthContext)  
+  const {currentUser} = useContext(AuthContext)  
 
 
   return (
@@ -182,8 +182,8 @@ export default function Profile() {
         currentUser && currentUser?
         <>
       <h4>Email: {currentUser && currentUser.email}</h4>
-      <h4>Created-at: {currentUser && currentUser.created_at}</h4>
-      <h4>Updated-at: {currentUser && currentUser.updated_at}</h4>
+      {/* <h4>Created-at: {currentUser && currentUser.created_at}</h4>
+      <h4>Updated-at: {currentUser && currentUser.updated_at}</h4> */}
         </>
         :
         <div className='text-info'>
@@ -193,3 +193,4 @@ export default function Profile() {
     </div>
   )
 }
+

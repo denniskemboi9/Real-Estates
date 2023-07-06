@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { PropertyContext } from '../Context/PropertyContext';
 
 function AddProperty() {
+
+  const {properties} = useContext(PropertyContext)
+
   const [property, setProperty] = useState({
     title: '',
     description: '',

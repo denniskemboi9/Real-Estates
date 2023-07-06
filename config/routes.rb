@@ -2,10 +2,14 @@ Rails.application.routes.draw do
   resources :bookings
   resources :properties
 
+  # post "/add_properties" to: "properties#create"
+  # get "/properties" to: "properties#show"
+  # delete "/delete_property" to: "properties#destroy"
+
 
   post "/signup", to: "users#create"
   get "/current_user", to: "users#show" 
-  # get "/current_user", to: "users#current_user"
+  get "/current_user", to: "users#current_user"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
