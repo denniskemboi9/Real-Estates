@@ -5,6 +5,7 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.string :location
       t.string :description
       t.string :image_url
+      t.boolean :is_approved
       t.timestamps
     end
   end

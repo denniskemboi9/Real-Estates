@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_212241) do
     t.string "location"
     t.string "description"
     t.string "image_url"
+    t.boolean "is_approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,7 +1,6 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../Context/AuthContext'
-
+import { AuthContext } from '../Context/AuthContext';
 export default function Navbar() 
 {
 
@@ -23,9 +22,6 @@ export default function Navbar()
             <Link to="/Home" className="nav-link active" aria-current="page" >Home</Link>
             </li>
 
-
-            {
-            currentUser?
             <>
 
             <li className="nav-item">
@@ -59,11 +55,7 @@ export default function Navbar()
             </li>
 
             </>
-
-            }
-
-            
-            
+  
         </ul>
 
         </div>

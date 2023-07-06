@@ -124,7 +124,7 @@ export default function Home() {
           justifyContent: 'space-between',
         }}
       >
-        {properties.map((property) => (
+        {properties && properties.map && properties.map((property) => (
           <div
             key={property.id}
             style={{
@@ -141,10 +141,10 @@ export default function Home() {
               },
             }}
           >
-            <h2>{property.title}</h2>
+            <h2>{property.name}</h2>
             <img
-              src={property.image}
-              alt={property.title}
+              src={property.image_url}
+              alt={property.name}
               style={{
                 width: '100%',
                 height: '200px',

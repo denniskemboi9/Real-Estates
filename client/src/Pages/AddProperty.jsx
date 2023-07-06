@@ -7,7 +7,7 @@ function AddProperty() {
   const { createProperty } = useContext(PropertyContext);
 
   const [property, setProperty] = useState({
-    title: '',
+    name: '',
     description: '',
     imageUrl: '',
     location: '',
@@ -23,7 +23,7 @@ function AddProperty() {
     console.log(property);
     // Reset the form
     setProperty({
-      title: '',
+      name: '',
       description: '',
       imageUrl: '',
       location: '',
@@ -34,11 +34,11 @@ function AddProperty() {
   };
 
   return (
-    <div className="container ">
+    <div className="container">
       <h1>Add Property</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             name="title"
