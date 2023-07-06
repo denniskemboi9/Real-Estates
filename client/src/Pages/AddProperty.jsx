@@ -1,71 +1,93 @@
-import React, { createContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { PropertyContext} from '../Context/PropertyContext'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-export const PropertyContext = createContext();
+function AddProperty() {
+  const { createProperty } = useContext(PropertyContext);
 
-const PropertyProvider = ({ children }) => {
-  const [properties, setProperties] = useState([]);
+  const [property, setProperty] = useState({
+    title: '',
+    description: '',
+    imageUrl: '',
+    location: '',
+  });
 
-  const fetchProperties = () => {
-    fetch('/properties')
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the properties state with the fetched properties
-        setProperties(data);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error fetching properties:', error);
-      });
+  const handleChange = (e) => {
+    setProperty({ ...property, [e.target.name]: e.target.value });
   };
 
-  const createProperty = (propertyData) => {
-    fetch('/properties', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(propertyData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response data
-        console.log('Created property:', data);
-        // Perform any additional actions with the created property data
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error creating property:', error);
-      });
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform the logic to submit the property data to your backend or perform any other actions
+    console.log(property);
+    // Reset the form
+    setProperty({
+      title: '',
+      description: '',
+      imageUrl: '',
+      location: '',
+    });
 
-  const deleteProperty = (id) => {
-    fetch(`/properties/${id}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response data
-        console.log('Deleted property:', data);
-        // Perform any additional actions after deleting the property
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error deleting property:', error);
-      });
-  };
-
-  const contextData = {
-    properties,
-    fetchProperties,
-    createProperty,
-    deleteProperty,
+    // Fetch property using the fetchProperty function from the context
+    createProperty(property);
   };
 
   return (
-    <PropertyContext.Provider value={contextData}>
-      {children}
-    </PropertyContext.Provider>
-  );
-};
+    <div className="container ">
+      <h1>Add Property</h1>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            name="title"
+            value={property.title}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-export default PropertyProvider;
+        <Form.Group controlId="description">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="description"
+            value={property.description}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="imageUrl">
+          <Form.Label>Image URL</Form.Label>
+          <Form.Control
+            type="text"
+            name="imageUrl"
+            value={property.imageUrl}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="location">
+          <Form.Label>Location</Form.Label>
+          <Form.Control
+            type="text"
+            name="location"
+            value={property.location}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Add Property
+        </Button>
+      </Form>
+    </div>
+  );
+}
+
+export default AddProperty;
