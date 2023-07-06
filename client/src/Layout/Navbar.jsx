@@ -22,43 +22,49 @@ export default function Navbar()
             <Link to="/Home" className="nav-link active" aria-current="page" >Home</Link>
             </li>
 
+        { 
+        currentUser && currentUser.email?
             <>
-
-            <li className="nav-item">
-                <Link to="/AddProperty" className="nav-link active" >Add Property</Link>
-            </li>
-
-            <li className="nav-item">
-                <Link to="/ApproveProperty" className="nav-link active" >Approve Property</Link>
-            </li>
-
-            <li className="nav-item dropdown">
-                <Link to="/profile" className="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</Link>          
-                <ul className="dropdown-menu">
-                    <li><Link to="/Profile" className="dropdown-item" href="#">{currentUser && currentUser.email}</Link></li>
+                {currentUser && currentUser.is_admin &&
+                <li className="nav-item">
+                <Link to="/ApproveProperty" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-orange-700 md:p-0 dark:text-white md:dark:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                    Approve Property</Link>
+                </li>
+                }
         
-                    {/* <li><hr className="dropdown-divider" /></li> */}
-                    <li><a className="dropdown-item" onClick={() => logout()}>Logout</a></li>
-                </ul>
-            </li>
+                <li className="nav-item">
+                    <Link to="/AddProperty" className="nav-link active" >Add Property</Link>
+                </li>
+
+                <li className="nav-item dropdown">
+                    <Link to="/Profile" className="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</Link>          
+
+                    <ul className="dropdown-menu">
+                        <li><Link to="/Profile" className="dropdown-item" href="#">{currentUser && currentUser.email}</Link></li>
+            
+                        {/* <li><hr className="dropdown-divider" /></li> */}
+                        <li><a className="dropdown-item" onClick={() => logout()}>Logout</a></li>
+                    </ul>
+                </li>
 
             </>
             :
             <>
 
-            <li className="nav-item">
-            <Link to="/Login" className="nav-link active" >Login</Link>
-            </li>
+                <li className="nav-item">
+                <Link to="/Login" className="nav-link active" >Login</Link>
+                </li>
 
-            <li className="nav-item">
-            <Link to="/register" className='nav-link active'>Register</Link>
-            </li>
+                <li className="nav-item">
+                <Link to="/register" className='nav-link active'>Register</Link>
+                </li>
 
             </>
+        }
   
         </ul>
-
         </div>
+        
     </div>
     </nav>
     </div>

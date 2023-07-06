@@ -10,17 +10,19 @@ export default function AuthProvider({children})
 
     const [currentUser, setCurrentUser] = useState()
 
-    const [change, setChange] = useState(false)
+    const [change, setChange] = useState(true)
 
     // login
     const login = (email, password) =>{
         fetch("/login",{
             method: "POST",
             headers:{"Content-Type": "application/json"},
+            credentials: 'include',
             body: JSON.stringify({email, password})
         })
         .then(res=>res.json())
         .then(response=>{
+            console.log(response)
             if(response.error)
             {
                  
@@ -86,12 +88,11 @@ export default function AuthProvider({children})
      // Logout
      const logout = () =>{
         fetch("/logout",{
-            method: "POST",
-            headers:{"Content-Type": "application/json"}
+            method: "DELETE",
+
         })
         .then(res=>res.json())
         .then((response)=>{
-            setChange(!change)
             Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -107,28 +108,28 @@ export default function AuthProvider({children})
    
     // check current user
     useEffect(()=>{
+        console.log(currentUser)
         fetch("/current_user",{
             method: "GET",
-            headers:{
-                "Content-Type": "application/json"
-            },
+            credentials: 'include'
         })
         .then(res=>res.json())
         .then(response=>{
+            setCurrentUser(response)
             console.log(response)
-            if (response.user)
-            {
-                setCurrentUser(response.user)
-            }
+            // if (response.user)
+            // {
+            //     setCurrentUser(response.user)
+            // }
             
         })
     }, [change])
 
     const contextData = {
         login, 
-        currentUser,
         register, 
-        logout
+        logout,
+        currentUser
     }
 
   return (

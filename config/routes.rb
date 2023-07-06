@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   patch "/properties/approve/:id", to:"properties#approve"
 
   post "/signup", to: "users#create"
-  get "/current_user", to: "users#show" 
   get "/current_user", to: "users#current_user"
 
   post "/login", to: "sessions#create"
