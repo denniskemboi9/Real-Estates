@@ -44,28 +44,28 @@
 # puts '✅ Done seeding'
 
 
-# puts "Destroying old data"
-# User.destroy_all
-# Property.destroy_all
-# Booking.destroy_all
+puts "Destroying old data"
+User.destroy_all
+Property.destroy_all
+Booking.destroy_all
 
 
-# puts "Seeding Users..."
-# 5.times do
-#   User.create!(
-#     email: Faker::Internet.email,
-#     password_digest: Faker::Internet.password,
-#     is_admin: Faker::Boolean.boolean
-#   )
-# end
+puts "Seeding Users..."
+5.times do
+  User.create!(
+    email: Faker::Internet.unique.email,
+    password: Faker::Internet.password(min_length: 5),
+    is_admin: Faker::Boolean.boolean(true_ratio: 0.2)
+  )
+end
 
 puts "Seeding properties..."
 10.times do
   Property.create!(
-    name: Faker::Address.community,
+    name: Faker::Company.unique.name,
     location: Faker::Address.city,
-    description: Faker::Lorem.sentence,
-    image_url: Faker::LoremPixel.image(size: "300x200", is_gray: false, category: 'city')
+    description: Faker::Lorem.paragraph(sentence_count: 2),
+    image_url: Faker::LoremFlickr.image(size: "300x200", search_terms: ['city'])
   )
 end
 puts "Seeding bookings..."
