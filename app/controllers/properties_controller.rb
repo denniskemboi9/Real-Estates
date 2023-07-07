@@ -52,6 +52,11 @@ class PropertiesController < ApplicationController
     render json: properties
   end
 
+  def destroy_approve
+    properties = Property.find_by(id: params[:id]) 
+    properties.destroy
+    head :no_content
+  end
     
   private
   def property_params

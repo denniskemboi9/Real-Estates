@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # delete "/delete_property" to: "properties#destroy"
   get "/approvedproperties", to:"properties#approvedproperties"
   patch "/properties/approve/:id", to:"properties#approve"
-
+delete "/properties/approve/:id", to: "properties#destroy_approve"
   post "/signup", to: "users#create"
   get "/current_user", to: "users#current_user"
 
