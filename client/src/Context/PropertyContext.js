@@ -89,8 +89,12 @@ const PropertyProvider = ({ children }) => {
 
   const contextData = {
     properties,
+<<<<<<< HEAD
     fetchProperties,
     createProperty,
+=======
+    addProperty,
+>>>>>>> 4dec6bf (approve property changes)
     deleteProperty,
   };
 
