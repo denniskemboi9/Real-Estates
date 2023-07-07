@@ -3,7 +3,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { PropertyContext } from "../Context/PropertyContext";
 
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ property, approveProperty, setApproveProperty }) => {
     const { deleteProperty } = useContext(PropertyContext);
     const {currentUser} = useContext(AuthContext)
     function handleDelete(){
@@ -19,7 +19,11 @@ const PropertyCard = ({ property }) => {
             //     title: 'Logged out successfully!',
             //     timer: 300
             // })
+            
             console.log(response, "successful")
+            setApproveProperty(
+                property.filter((previousProperty) => previousProperty.id !== property.id)
+            )
             deleteProperty(property.id);
              // Remove the card from the UI
         const cardElement = document.getElementById(`property-card-${property.id}`);
