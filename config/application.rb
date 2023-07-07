@@ -10,6 +10,9 @@ module RealEstate
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -23,5 +26,6 @@ module RealEstate
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.secret_key_base = 'ce871dd41ba1f25bd829da41268d875eada0478ff2c3bfe26d8a4177df524823abd9ece4facade5856fcdb4762ec2fd34ecc94adf5596449815f084a1e7c6354'
   end
 end
