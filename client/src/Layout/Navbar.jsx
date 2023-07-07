@@ -10,7 +10,7 @@ export default function Navbar()
 
     return (
         <div>
-        <nav className="navbar navbar-expand-lg bg-primary mt-3">
+        <nav className="navbar navbar-expand-lg bg-success mt-3">
         <div className="container">
 
         <a className="navbar-brand fw-bolder" href="/"><h2>Real Estate</h2></a>
