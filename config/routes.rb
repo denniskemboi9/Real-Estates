@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :bookings
   resources :properties
-  resources :users
 
   # post "/add_properties" to: "properties#create"
   # get "/properties" to: "properties#show"

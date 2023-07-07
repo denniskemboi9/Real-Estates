@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2"
 
@@ -8,7 +8,7 @@ export default function AuthProvider({children})
 {
     const navigate = useNavigate()
 
-    const [currentUser, setCurrentUser] = useState()
+    const [currentUser, setCurrentUser] = useState(false)
 
     const [change, setChange] = useState(true)
 
@@ -22,7 +22,7 @@ export default function AuthProvider({children})
         })
         .then(res=>res.json())
         .then(response=>{
-            console.log(response)
+            // console.log(response)
             if(response.error)
             {
                  
@@ -108,20 +108,14 @@ export default function AuthProvider({children})
    
     // check current user
     useEffect(()=>{
-        console.log(currentUser)
         fetch("/current_user",{
             method: "GET",
-            credentials: 'include'
         })
         .then(res=>res.json())
         .then(response=>{
             setCurrentUser(response)
             console.log(response)
-            // if (response.user)
-            // {
-            //     setCurrentUser(response.user)
-            // }
-            
+
         })
     }, [change])
 

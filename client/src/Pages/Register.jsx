@@ -130,6 +130,7 @@ export default function Register() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="form-control"
+            placeholder="Password"
             required
           />
         </div>
@@ -144,6 +145,7 @@ export default function Register() {
             value={password_confirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
             className="form-control"
+            placeholder="Password"
             required
           />
         </div>

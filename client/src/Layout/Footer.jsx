@@ -4,6 +4,8 @@ import Card from 'react-bootstrap/Card';
 function Footer() {
   return (
     <div className="wrapper" style={{ minHeight: '10vh', display: 'flex', flexDirection: 'column' }}>
+
+      <footer className="footer mt-auto py-0 bg-primary text-center text-white">
       <Card className="text-center">
         <Card.Body>
           <Card.Title>Real Estate</Card.Title>
@@ -12,7 +14,8 @@ function Footer() {
           </Card.Text>
         </Card.Body>
       </Card>
-      <footer className="footer mt-auto py-0 bg-primary text-center text-white">Copyright © 2023 Real Estate.</footer>
+       <h5> Copyright © 2023 Real Estate.</h5>
+        </footer>
     </div>
   );
 }
