@@ -5,7 +5,7 @@ class PropertiesController < ApplicationController
   # Show All Properties
   def index
     property = Property.all
-    render json: { success: " All Properties"}
+    render json: property
   end
   
   # Show Property by ID
@@ -37,7 +37,7 @@ class PropertiesController < ApplicationController
       property = Property.find_by(id: params[:id]) #value or null
       if property
           property.update(is_approved: true)
-          render json: {success: "property Approved... Can be seen by users"}, status: :created
+          render json: {success: "Property Approved... Can be seen by users"}, status: :created
       else
           render json: {error: "Property not found"}, status: :not_found
       end
@@ -49,7 +49,7 @@ class PropertiesController < ApplicationController
 
   def approvedproperties
     properties = Property.where(is_approved: true) 
-    render json: { message: "Approved Properties"}
+    render json: properties
   end
 
     

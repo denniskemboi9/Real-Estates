@@ -40,7 +40,7 @@ export default function Navbar()
                 <li><Link to="/Profile" className="dropdown-item" href="#">Current User</Link></li>
 
                   {/* <li><hr className="dropdown-divider" /></li> */}
-                <li><a className="dropdown-item" onClick={() => logout()}>Logout</a></li>
+                <li><a className="dropdown-item" href='#' onClick={() => logout()}>Logout</a></li>
                 </ul>
             </li>
 

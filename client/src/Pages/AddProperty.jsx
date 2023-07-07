@@ -1,22 +1,18 @@
-import React, { useContext, useState } from 'react';
-import { PropertyContext} from '../Context/PropertyContext'
+import React, { useState } from 'react';
+import { usePropertyContext } from '../Context/PropertyContext';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
 function AddProperty() {
-  const { createProperty } = useContext(PropertyContext);
-
+  const { addProperty } = usePropertyContext();
   const [property, setProperty] = useState({
     name: '',
     description: '',
-    imageUrl: '',
+    image_url: '',
     location: '',
   });
-
   const handleChange = (e) => {
     setProperty({ ...property, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you can perform the logic to submit the property data to your backend or perform any other actions
@@ -25,29 +21,26 @@ function AddProperty() {
     setProperty({
       name: '',
       description: '',
-      imageUrl: '',
+      image_url: '',
       location: '',
     });
-
-    // Fetch property using the fetchProperty function from the context
-    createProperty(property);
+    // Fetch property using the addProperty function from the context
+    addProperty(property);
   };
-
   return (
     <div className="container">
       <h1>Add Property</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="title">
+        <Form.Group controlId="name">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
-            name="title"
-            value={property.title}
+            name="name"
+            value={property.name}
             onChange={handleChange}
             required
           />
         </Form.Group>
-
         <Form.Group controlId="description">
           <Form.Label>Description</Form.Label>
           <Form.Control
@@ -59,18 +52,16 @@ function AddProperty() {
             required
           />
         </Form.Group>
-
-        <Form.Group controlId="imageUrl">
+        <Form.Group controlId="image_url">
           <Form.Label>Image URL</Form.Label>
           <Form.Control
             type="text"
-            name="imageUrl"
-            value={property.imageUrl}
+            name="image_url"
+            value={property.image_url}
             onChange={handleChange}
             required
           />
         </Form.Group>
-
         <Form.Group controlId="location">
           <Form.Label>Location</Form.Label>
           <Form.Control
@@ -81,7 +72,6 @@ function AddProperty() {
             required
           />
         </Form.Group>
-
         <Button variant="primary" type="submit">
           Add Property
         </Button>
@@ -89,5 +79,4 @@ function AddProperty() {
     </div>
   );
 }
-
 export default AddProperty;

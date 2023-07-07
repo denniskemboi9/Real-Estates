@@ -1,22 +1,21 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { PropertyContext } from "../Context/PropertyContext";
+
+
+// const state
 const ApproveProperty = () => {
-  const { properties,  approveProperty } = useContext(
-    PropertyContext
-  );
+  const { properties,  approveProperty } = useContext(PropertyContext);
+  const handleApprove = (propertyId) => {approveProperty(propertyId)};
 
-  // useEffect(() => {
-  //   fetchProperties();
-  // }, []);
-
-  const handleApprove = (propertyId) => {
-    approveProperty(propertyId);
-  };
+console.log (properties)
 
   return (
     <div>
       <h2>Approve Property</h2>
-      {properties && properties.map((property) => (
+
+      {properties && properties
+          .filter((property) => !property.is_approved) // Filter out approved properties
+          .map((property) => (
         <div key={property.id}>
           <h3>{property.name}</h3>
           <p>Location: {property.location}</p>
@@ -31,3 +30,5 @@ const ApproveProperty = () => {
 };
 
 export default ApproveProperty;
+
+

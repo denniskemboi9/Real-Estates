@@ -4,11 +4,11 @@ import Layout from "./Layout/Layout";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import AddProperty from "./Pages/AddProperty";
-import ApprovePropert from "./Pages/ApproveProperty";
 import LandingPage from "./Pages/Landingpage";
 import Profile from "./Pages/Profile";
 import AuthProvider from "./Context/AuthContext";
 import PropertyProvider from "./Context/PropertyContext";
+import ApproveProperty from "./Pages/ApproveProperty";
 
 function App() {
     return (
@@ -25,7 +25,7 @@ function App() {
                     <Route path="/Register" element={<Register />}/>
                     <Route path="/AddProperty" element={<AddProperty />}/>
                     <Route path="/Profile" element={<Profile />}/>
-                    <Route path="/ApproveProperty" element={<ApprovePropert />}/>
+                    <Route path="/ApproveProperty" element={<ApproveProperty />}/>
                     </Route>
                 </Routes>
 
