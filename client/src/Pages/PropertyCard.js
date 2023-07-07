@@ -43,7 +43,8 @@ const PropertyCard = ({ property, approveProperty, setApproveProperty }) => {
             <div className="col-lg-8 bg-light">
                 <p className="mt-3">{property.description}</p>
                 {/* <img className="mt-3 img-fluid" src={property.image_url}/> */}
-                <img class="h-auto max-w-full rounded-lg" src={property.image_url} alt="" />
+                {/* <img class="h-auto max-w-full rounded-lg" src={property.image_url} alt="" /> */}
+                <img className="mt-3 img-fluid rounded" style={{ width: "40%" }} src={property.image_url}/>
             </div>
 
             <div className="d-flex mt-4 gap-5">
