@@ -42,7 +42,7 @@ const PropertyCard = ({ property, approveProperty, setApproveProperty }) => {
             <div className="row gx-5">
             <div className="col-lg-8 bg-light">
                 <p className="mt-3">{property.description}</p>
-                <img className="mt-3" src={property.image_url}/>
+                <img className="mt-3 img-fluid" src={property.image_url}/>
             </div>
 
             <div className="d-flex mt-4 gap-5">
