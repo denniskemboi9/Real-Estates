@@ -3,22 +3,21 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+## Schema
 
-* Ruby version
+Link to schema :https://drawsql.app/teams/trial-17/diagrams/real-estate
 
-* System dependencies
+![Alt text](https://github.com/denniskemboi9/real-estates/blob/rails/drawSQL-real-estate-export-2023-07-09.png "Schema Diagram")
 
-* Configuration
 
-* Database creation
+## User Stories
+A user can login/register
+A user can check properties on the site
+A user can add properties on the site.
+A user can remove property he posted on the site
+A user can book a property from the site
+A user can check all his/her bookings
 
-* Database initialization
+An Admin can approve a property before its listed
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
