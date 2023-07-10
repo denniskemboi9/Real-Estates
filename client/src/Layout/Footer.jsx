@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className="wrapper" style={{ minHeight: '10vh', display: 'flex', flexDirection: 'column' }}>
 
-      <footer className="footer mt-auto py-0 bg-primary text-center text-white">
+      <footer className="footer mt-auto py-0 bg-success text-center text-white">
       <Card className="text-center">
         <Card.Body>
           <Card.Title>Real Estate</Card.Title>
@@ -15,7 +15,8 @@ function Footer() {
         </Card.Body>
       </Card>
        <h5> Copyright © 2023 Real Estate.</h5>
-        </footer>
+      </footer>
+
     </div>
   );
 }

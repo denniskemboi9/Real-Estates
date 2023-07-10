@@ -26,11 +26,11 @@ export default function AuthProvider({children})
             if(response.error)
             {
                  
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: response.error,
-                    })
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: response.error,
+                })
             }
             else if(response.success)
             {
@@ -68,7 +68,7 @@ export default function AuthProvider({children})
         })
         .then(res=>res.json())
         .then((response) => {
-            console.log(response);
+            // console.log(response);
             if (response.errors) {
               Swal.fire("Error", response.error, "error");
             } 
@@ -81,12 +81,12 @@ export default function AuthProvider({children})
             else {
               Swal.fire("Error", "Something went wrong", "error");
             }
-          });
+        });
         
     }
 
-     // Logout
-     const logout = () =>{
+    // Logout
+    const logout = () =>{
         fetch("/logout",{
             method: "DELETE",
 

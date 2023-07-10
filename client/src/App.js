@@ -6,9 +6,11 @@ import Register from "./Pages/Register";
 import AddProperty from "./Pages/AddProperty";
 import LandingPage from "./Pages/Landingpage";
 import Profile from "./Pages/Profile";
+import Booking from "./Pages/Booking";
+import ApproveProperty from "./Pages/ApproveProperty";
 import AuthProvider from "./Context/AuthContext";
 import PropertyProvider from "./Context/PropertyContext";
-import ApproveProperty from "./Pages/ApproveProperty";
+import BookingsProvider from "./Context/BookingsContext"
 
 function App() {
     return (
@@ -16,6 +18,7 @@ function App() {
         <BrowserRouter>
             <AuthProvider>
                 <PropertyProvider>
+                    <BookingsProvider>
             
                 <Routes>
                     <Route path="/" element={<Layout />}>
@@ -26,9 +29,11 @@ function App() {
                     <Route path="/AddProperty" element={<AddProperty />}/>
                     <Route path="/Profile" element={<Profile />}/>
                     <Route path="/ApproveProperty" element={<ApproveProperty />}/>
+                    <Route path="/Booking" element={<Booking/>} />
                     </Route>
                 </Routes>
 
+                    </BookingsProvider>
                 </PropertyProvider>
             </AuthProvider>
         </BrowserRouter>

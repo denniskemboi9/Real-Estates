@@ -1,12 +1,16 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
 export const PropertyContext = createContext();
-export default function PropertyProvider({ children }) {
+
+export default function PropertyProvider({ children })
+{
+
   const navigate = useNavigate();
   const [properties, setProperties] = useState([]);
-
   const [change, setChange] = useState(true);
+
   // Fetch properties
   const fetchProperties = () => {
     fetch("/properties", {
@@ -15,23 +19,20 @@ export default function PropertyProvider({ children }) {
     })
       .then((res) => res.json())
       .then((response) => {
-        // if (response.error) {
-        //   Swal.fire("Error", response.error, "error");
-        // } else {
-        //   setProperties(response);
-        //   console.log( 'property', response)
-        // }
-        console.log(response)
+        // console.log(response)
         setProperties(response)
       })
       // .catch((error) => {
       //   console.log("Error fetching properties:", error);
       // });
   };
+
   useEffect(() => {
     fetchProperties();
 
   }, [change]);
+
+
   // Add property
   const addProperty = (propertyData) => {
     fetch("/properties", {
@@ -57,6 +58,8 @@ export default function PropertyProvider({ children }) {
       //   console.log("Error adding property:", error);
       // });
   };
+
+  
   // Delete property
   const deleteProperty = (propertyId) => {
     fetch(`/properties/${propertyId}`, {
@@ -78,24 +81,7 @@ export default function PropertyProvider({ children }) {
   };
 
 
-  // // Approve Property
-  // const approveProperty = (propertyId) => {
-  //   fetch(`/properties/approve/${propertyId}`, {
-  //     // /properties/approve/:id
-  //     // method: "PATCH",
-  //     // credentials: "include",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((response) => {
-  //       console.log(response)
-  //     });
-  //     navigate("/Home")
-  // };
-
-  // Assuming you have the property ID available in a variable called `propertyId`
-
 // Approve property function
-
 const approveProperty = (propertyId) => {
   fetch(`/properties/approve/${propertyId}`, {
     method: "PATCH",
@@ -112,7 +98,8 @@ const approveProperty = (propertyId) => {
         // You can perform any necessary actions or show a success message
         setProperties((prevProperties) =>
         prevProperties.filter((property) => property.id !== propertyId)
-      );
+        );
+        navigate("/Home")
 
       } else if (data.error) {
         // Error occurred during approval
@@ -128,7 +115,6 @@ const approveProperty = (propertyId) => {
 };
 
 
-
   const contextData = {
     properties,
     addProperty,
@@ -141,4 +127,3 @@ const approveProperty = (propertyId) => {
     </PropertyContext.Provider>
   );
 }
-export const usePropertyContext = () => useContext(PropertyContext);
