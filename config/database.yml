@@ -10,8 +10,9 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  url: postgresql://real_estate_pg_db_user:CFf5kEt6zNOPTWc2fgDP1iZUeD8QXjTh@dpg-cilqdeunqqlfm4ctd42g-a/real_estate_pg_db
+  # <<: *default
+  # database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
