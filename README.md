@@ -20,14 +20,14 @@ Link to schema :https://drawsql.app/teams/trial-17/diagrams/real-estate
 
 
 ## User Stories
--A user can login/register
--A user can check properties on the site
--A user can add properties on the site.
--A user can remove property he posted on the site
--A user can book a property from the site
--A user can check all his/her bookings
+-`A user can login/register`
+-`A user can check properties on the site`
+-`A user can add properties on the site`
+-`A user can remove property he posted on the site`
+-`A user can book a property from the site`
+-`A user can check all his/her bookings`
 
--An Admin can approve a property before its listed
+-`An Admin can approve a property before its listed`
 
 ## Contributing
 Pull requests are welcome.
