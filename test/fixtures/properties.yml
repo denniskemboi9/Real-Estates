@@ -3,15 +3,13 @@
 one:
   name: MyString
   description: MyString
-  price: MyInteger
-  location: MyString
-  image_url: MyString
-  
-two:
-  name: MyString
-  description: MyString
-  price: MyInteger
+  price: 1
   location: MyString
   image_url: MyString
 
- 
+two:
+  name: MyString
+  description: MyString
+  price: 1
+  location: MyString
+  image_url: MyString

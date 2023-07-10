@@ -2,8 +2,6 @@
 
 one:
   email: MyString
-  is_admin: true
 
 two:
   email: MyString
-  is_admin: true

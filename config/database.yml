@@ -10,7 +10,7 @@ default: &default
   timeout: 5000
 
 development:
-  url: postgresql://real_estate_pg_db_user:CFf5kEt6zNOPTWc2fgDP1iZUeD8QXjTh@dpg-cilqdeunqqlfm4ctd42g-a/real_estate_pg_db
+  url: postgresql://real_estate_postgres_db_user:s9RyDY6ArzPimiqe4JDbGDScB6CME8s2@dpg-cilv80lph6eg6kblbrrg-a/real_estate_postgres_db
   # <<: *default
   # database: db/development.sqlite3
 
