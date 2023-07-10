@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :bookings
+  resources :bookings, only: [:index, :show, :destroy]
   resources :properties
 
-  # post "/add_properties" to: "properties#create"
-  # get "/properties" to: "properties#show"
-  # delete "/delete_property" to: "properties#destroy"
+  post "/bookings/:property_id", to: "bookings#create"
+  
   get "/approvedproperties", to:"properties#approvedproperties"
   patch "/properties/approve/:id", to:"properties#approve"
 
@@ -18,3 +17,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 end
+
+

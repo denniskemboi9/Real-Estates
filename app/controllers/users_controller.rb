@@ -5,10 +5,11 @@ class UsersController < ApplicationController
     # Signup
     def create
       user = User.create!(user_params)
-      session[:user_id] = user.id
+      # session[:user_id] = user.id
       render json: {success: "Successful Signup"}, status: :created
     end
   
+    # Get user by id 
     def show
       render json: @current_user
     end
@@ -19,7 +20,6 @@ class UsersController < ApplicationController
     
       if user
         render json: user
-        # { user: "This is Current user"}
 
       else
         render json: {error: "No user is logged in"}
@@ -32,4 +32,5 @@ class UsersController < ApplicationController
     def user_params
       params.permit(:email, :password, :password_confirmation)
     end
+    
   end

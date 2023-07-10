@@ -28,9 +28,10 @@ class PropertiesController < ApplicationController
   def destroy
     property = Property.find_by(id: params[:id])
     property.destroy
-    render json: {message: "Property Deleted Succesfully"}
+    render json: {success: "Property Deleted Succesfully"}
   end
 
+  # Action to Approve properties - Only by Admin
   def approve
     current_user=User.find_by(id: session[:user_id])
     if current_user.is_admin==true
@@ -46,15 +47,15 @@ class PropertiesController < ApplicationController
     end
   end
 
-
+  # Get all approved properties
   def approvedproperties
     properties = Property.where(is_approved: true) 
     render json: properties
   end
 
-    
   private
   def property_params
-    params.permit(:name, :location, :description, :image_url)
+    params.permit(:name, :description, :price, :location, :image_url)
   end
+
 end

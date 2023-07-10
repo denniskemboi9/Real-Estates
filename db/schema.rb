@@ -21,8 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_212241) do
 
   create_table "properties", force: :cascade do |t|
     t.string "name"
-    t.string "location"
     t.string "description"
+    t.integer "price"
+    t.string "location"
     t.string "image_url"
     t.boolean "is_approved", default: false
     t.datetime "created_at", null: false

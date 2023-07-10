@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :bookings
+    has_many :bookings, dependent: :destroy
     has_many :properties, through: :bookings
     has_secure_password
 

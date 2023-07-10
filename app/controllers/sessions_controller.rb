@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
 
     skip_before_action :authorize, only: :create
 
-
     # Login
     def create
       user = User.find_by(email: params[:email])
@@ -19,4 +18,5 @@ class SessionsController < ApplicationController
       session.delete :user_id
       render json: {message: "Logout successful"}, status: :ok
     end
+    
 end
